@@ -1,0 +1,45 @@
+name: main to release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  squash-merge-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Checkout the release branch
+        run: git checkout release
+
+      - name: Merge release PR into the release branch
+        run: |
+          # Fetch the latest changes from main
+          git checkout main
+          git pull origin main
+          
+          # Get the tag of the release
+          RELEASE_TAG=$(git tag --list --sort=-v:refname | head -n 1)
+          
+          # Checkout the release branch again and rebase
+          git checkout release
+          
+          # Rebase from main onto release to ensure it's up-to-date with main
+          git rebase main
+          
+          # Squash the commits from main (the merged release PR)
+          git reset --soft $(git merge-base release main)
+          git commit --amend --no-edit -m "Release: $RELEASE_TAG"
+          
+      - name: Push changes to release branch
+        run: |
+          git push origin release --force
