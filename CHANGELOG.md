@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/GitHaHaHub/dma/compare/v1.0.0...v1.1.0) (2025-03-17)
+
+
+### Features
+
+* add sync ([46207a1](https://github.com/GitHaHaHub/dma/commit/46207a1566552d74476f9f8246dbe2b1deddd3e6))
+* delete a ([7cc3e83](https://github.com/GitHaHaHub/dma/commit/7cc3e832c8f67a4edb196a0973bd7cdb7141ce99))
+
 ## 1.0.0 (2025-03-17)
 
 
