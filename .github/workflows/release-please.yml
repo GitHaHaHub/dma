@@ -19,8 +19,17 @@ jobs:
           target-branch: develop
           skip-github-release: true
 
-  handle-release-pr:
+  print:
     needs: generate-release-pr
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print release PR info
+        run: |
+          echo "github.event.pull_request.title: ${{ github.event.pull_request.title }}"
+      
+
+  handle-release-pr:
+    needs: print
     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'chore')
     runs-on: ubuntu-latest
     permissions:
