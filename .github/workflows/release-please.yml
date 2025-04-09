@@ -30,7 +30,7 @@ jobs:
 
   handle-release-pr:
     needs: print
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'chore')
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       contents: write
