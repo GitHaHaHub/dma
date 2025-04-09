@@ -16,5 +16,4 @@ jobs:
           - uses: googleapis/release-please-action@v4
             with:
                 release-type: simple
-                target-branch: main
-                pull-request-branch: develop  # where to get commits from
+
