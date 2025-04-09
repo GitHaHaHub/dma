@@ -14,50 +14,6 @@ jobs:
     steps:
       - uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           release-type: simple
           target-branch: develop
           skip-github-release: true
-
-  print:
-    needs: generate-release-pr
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print release PR info
-        run: |
-          echo "github.event.pull_request.title: ${{ github.event.pull_request.title }}"
-      
-
-  handle-release-pr:
-    needs: print
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
-    steps:
-      - name: Recreate release PR from develop → main
-        run: |
-          TITLE="${{ github.event.pull_request.title }}"
-          BODY="${{ github.event.pull_request.body }}"
-
-          gh pr create \
-            --base main \
-            --head develop \
-            --title "$TITLE" \
-            --body "$BODY"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        
-
-      - name: Revert original merge commit on develop
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-
-          git clone --single-branch --branch develop https://github.com/${{ github.repository }} repo
-          cd repo
-
-          git revert -m 1 ${{ github.event.pull_request.merge_commit_sha }} --no-edit
-          git push origin develop
