@@ -8,7 +8,7 @@ on:
 
 jobs:
   handle-release-pr:
-    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'chore: release ')
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'chore')
     runs-on: ubuntu-latest
     permissions:
       contents: write
