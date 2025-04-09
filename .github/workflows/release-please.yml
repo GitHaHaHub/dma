@@ -16,6 +16,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: simple
+          target-branch: develop
           skip-github-release: true
 
   handle-release-pr:
