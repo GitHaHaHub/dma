@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/GitHaHaHub/dma/compare/v1.3.0...v1.4.0) (2025-04-09)
+
+
+### Features
+
+* ad ([8c4cac2](https://github.com/GitHaHaHub/dma/commit/8c4cac219c9f604bccedcd2ef750db54100024a4))
+* coc ([58b8258](https://github.com/GitHaHaHub/dma/commit/58b8258a814f5112e0dbc0505aa1433c50921fdc))
+
 ## [1.3.0](https://github.com/GitHaHaHub/dma/compare/v1.2.0...v1.3.0) (2025-04-09)
 
 
