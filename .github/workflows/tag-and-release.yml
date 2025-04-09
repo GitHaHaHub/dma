@@ -1,0 +1,40 @@
+name: tag-and-release
+needs: convert-release-pr
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  tag-and-release:
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.title, 'chore: release ')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Extract tag from PR title
+        id: extract
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          VERSION=$(echo "$TITLE" | grep -oP 'v\d+\.\d+\.\d+')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Tag develop branch
+        run: |
+          git fetch origin develop
+          git tag ${{ steps.extract.outputs.version }} origin/develop
+          git push origin ${{ steps.extract.outputs.version }}
+
+      - name: Tag main branch
+        run: |
+          git fetch origin main
+          git tag -f ${{ steps.extract.outputs.version }} origin/main
+          git push -f origin ${{ steps.extract.outputs.version }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.extract.outputs.version }}
+          generate_release_notes: true
