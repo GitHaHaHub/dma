@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/GitHaHaHub/dma/compare/v1.1.0...v1.2.0) (2025-04-09)
+
+
+### Features
+
+* add c.txt ([f847348](https://github.com/GitHaHaHub/dma/commit/f847348ae4d1c0c2be96396163b749b55f1e0be2))
+* add e ([f0a66da](https://github.com/GitHaHaHub/dma/commit/f0a66da11db2a160a0bf4e1122d812a810b39e3c))
+* correct ([46f3836](https://github.com/GitHaHaHub/dma/commit/46f38361ac8f38a25e7121ae7239472bb8f5e94e))
+* mod ([08a64ca](https://github.com/GitHaHaHub/dma/commit/08a64caaf60e2c9f16434bd1ebde49af6f6799e0))
+* mod ([8bac015](https://github.com/GitHaHaHub/dma/commit/8bac0151ad441ed6609b63e47e92059f5eb2aabe))
+* modif ([e1f6005](https://github.com/GitHaHaHub/dma/commit/e1f6005c116cb09f2fe5299d5328b2ba5a537430))
+* rp change ([b412914](https://github.com/GitHaHaHub/dma/commit/b412914bf267fb78fdf83f5dcf96301b30af23ea))
+
 ## [1.1.0](https://github.com/GitHaHaHub/dma/compare/v1.0.0...v1.1.0) (2025-03-17)
 
 
